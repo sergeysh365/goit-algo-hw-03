@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def get_days_from_today(date): # Функція розраховує кількість днів між заданою датою і поточною датою
+def get_days_from_today(date: str) -> int: # Функція розраховує кількість днів між заданою датою і поточною датою
     '''
     A function to calculate the number of days between a given date and the current date.
 

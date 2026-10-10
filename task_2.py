@@ -1,6 +1,6 @@
 import random 
 
-def get_numbers_ticket(min_value, max_value, quantity):
+def get_numbers_ticket(min_value, max_value, quantity: int) -> list[int]:
     '''
     A function that generates a set of unique random numbers for lotteries.
 
