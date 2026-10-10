@@ -29,10 +29,8 @@ def normalize_phone(phone_number: str) -> list[str]:
         cleaned = '+38' + cleaned # Додавання префіксу +38 до номера який не починається з '380'
     return [cleaned] # Повертаємо результат у вигляді списку з одного елемента
 
-if __name__ == '__main__':
-    sanitized_numbers = [] # Створення порожнього списку для зберігання всіх елементів списку
+sanitized_numbers = [] # Створення порожнього списку для зберігання всіх елементів списку
 
-
-    for phone in raw_numbers: # Проходження по оригінальному списку
-        sanitized_numbers.extend(normalize_phone(phone))  # Оскільки функція повертає СПИСОК, додаємо його елементи через .extend()
-    print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
+for phone in raw_numbers: # Проходження по оригінальному списку
+    sanitized_numbers.extend(normalize_phone(phone))  # Оскільки функція повертає СПИСОК, додаємо його елементи через .extend()
+print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)

@@ -21,5 +21,4 @@ def get_numbers_ticket(min_value, max_value, quantity):
     print(f'Ваші лотерейні числа: {lottery_numbers}')
     return lottery_numbers
 
-if __name__ == '__main__':
-    get_numbers_ticket(min_value=1, max_value=49, quantity=6)
+get_numbers_ticket(min_value=1, max_value=49, quantity=6)

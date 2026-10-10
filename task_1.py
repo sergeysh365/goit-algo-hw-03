@@ -20,5 +20,4 @@ def get_days_from_today(date): # Функція розраховує кільк�
         print(diff_days.days)
         return diff_days.days
 
-if __name__ == '__main__':
-    get_days_from_today('2029-10-05')
+get_days_from_today('2029-10-05')
