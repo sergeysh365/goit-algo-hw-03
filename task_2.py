@@ -1,4 +1,4 @@
-import random
+import random 
 
 def get_numbers_ticket(min_value, max_value, quantity):
     '''
