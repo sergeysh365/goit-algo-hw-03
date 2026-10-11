@@ -12,7 +12,7 @@ def get_numbers_ticket(min_value, max_value, quantity: int) -> list[int]:
     Output:
     :return: list
     '''
-    if min_value < 1 or max_value > 1000 or quantity < min_value or quantity > max_value: # Перевірка на коректність введених значень
+    if min_value < 1 or max_value > 1000 or quantity > (max_value - min_value + 1): # Перевірка на коректність введених значень
         lottery_numbers = [] # Створення порожнього списку
         print(f'Ваші лотерейні числа: {lottery_numbers}') # Виведення порожнього списку
         return lottery_numbers

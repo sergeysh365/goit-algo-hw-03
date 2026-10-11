@@ -10,9 +10,14 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
+	"+442079460915",
+    " +  (4930123456)",
+    '+33-123-45-67-89',
+    "+8613800138000",
+    "(81) 901 23 45 678"
 ]
 
-def normalize_phone(phone_number: str) -> list[str]:
+def normalize_phone(phone_number: str) -> str:
     '''
     A function that normalizes phone numbers to a standard format +380XXXXXXXXX.
 
@@ -20,17 +25,21 @@ def normalize_phone(phone_number: str) -> list[str]:
     :param phone_number: string
 
     Output:
-    :return: list
+    :return: string
     '''
-    cleaned = re.sub(r'\D', '', phone_number) # Очищення номеру від будь-яких знаків і символів
-    if cleaned.startswith('380'):
-        cleaned = '+' + cleaned # Додавання префіксу '+' до номера який починається з '380'
+    cleaned = re.sub(r'[^\+\d]', '', phone_number) # Видалення всіх знаків, окрім '+' і цифр
+    if cleaned.startswith('+'):
+        pass # Залишаємо номер без змін, якщо він починається з '+'
+    elif cleaned.startswith('380'):
+        cleaned = '+' + cleaned #  Додаємо '+' на початок номера, якщо він починається з '380'
+    elif cleaned.startswith('0'):
+        cleaned = '+38' +  cleaned # Додаємо '+38' на початок номера, якщо він починається з '0'
     else:
-        cleaned = '+38' + cleaned # Додавання префіксу +38 до номера який не починається з '380'
-    return [cleaned] # Повертаємо результат у вигляді списку з одного елемента
-
-sanitized_numbers = [] # Створення порожнього списку для зберігання всіх елементів списку
+        cleaned = '+' + cleaned # Додаємо '+' на початок номера, якщо він не починається з '+', '380' або '0'
+    return cleaned # Повертаємо результат у вигляді рядка з одного номера
+    
+sanitized_numbers = [] # Створення порожнього списку для зберігання всіх номерів у нормалізованому форматі
 
 for phone in raw_numbers: # Проходження по оригінальному списку
-    sanitized_numbers.extend(normalize_phone(phone))  # Оскільки функція повертає СПИСОК, додаємо його елементи через .extend()
+    sanitized_numbers.append(normalize_phone(phone))  # Додаємо номери у нормалізованому форматі до списку 
 print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
